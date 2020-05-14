@@ -1,0 +1,12 @@
+.card{
+    border: hidden;
+    border-radius: 10px;
+    height: 200%;
+    z-index: 102;
+    background-image: linear-gradient(to bottom , black, rgba(53, 49, 49, 0.616));
+    text-align: center;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.788);
+}
+h3,p{
+    color: white;
+}
