@@ -10,6 +10,7 @@ const usey=mongoose.model('User');
 const coursey=mongoose.model('Course');
 const urlencodedParser = parse.urlencoded({ extended: false });
 
+
 router.get('/',(req,res)=>{
     res.render('index',{title:'Welcome!'});
 });
@@ -37,19 +38,54 @@ router.post('/signUp',urlencodedParser,(req,res)=>{
 
 router.post('/login',urlencodedParser,(req,res)=>{
     User.findOne({userid:req.body.userid},(err,obj)=>{
-        if(obj===null){
-            // res.render('notFound',{title:'Not Found',layout:null});
-            console.log('Not Found!');
-        }
-        else{
-            if(obj.password!==req.body.password)    console.log("Found!");
-            else    console.log("Not Found!");
-        };
+        if(!err){
+            if(req.body.userid=='' | req.body.password==''){
+                if(req.body.userid=='' & req.body.password=='')
+                    res.render('index',{
+                        uid:'This field is required',
+                        ups:'This field is required'
+                    })
+                else{
+                    if(req.body.userid=='') res.render('index',{uid:'This field is required'})
+                    else if(req.body.password=='') res.render('index',{ups:'This field is required'})
+                }
+            }
+            else if(obj==null){
+                res.render('index',{
+                    viewTitle:'User does not exist'
+                })
+            }
+            else if(req.body.password!=obj.password || req.body.password==null){
+                res.render('index',{
+                    viewTitle:'Incorrect Password'
+                })
+            }
+            else if(req.body.password==obj.password){
+                res.render('profilePage',{
+                    user:obj,
+                    name=obj._id,
+                });
+            };
+        }else console.log('Error in signing in');
     });
 });
 
 
 
+router.get('/courses',(req,res)=>{
+    coursey.find({},(err,list)=>{
+        if(err) console.log(err);
+        else {
+            let chunk=[];
+            let size=3;
+            for(let i=0;i<list.length;i+=size){
+                chunk.push(list.slice(i,i+size));
+            }
+            console.log(chunk);
+            res.render('courses',{title:'Courses',prods:chunk});
+        };
+    });
+});
 
 function addUser(req,res){
     let user=new User();

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="css/courses.css">
+<div class="main">
+    {{> header}} <br><br>
+       <div class="contaier">
+        <h2 style="margin-left: 10%;">All Courses</h2> <br>
+            {{#each prods}}
+            <div class="row">
+                {{#each this}}
+                {{#each this}}
+                {{#if this.name}}
+                <div class="card" style="width: 18rem; margin-left:10%">
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&w=1000&q=80" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text">{{this.desc}}.</p>
+                <a href="#" class=><i class="fas fa-money-bill-wave">{{this.price}}</i></a>
+                <form method="POST" action="/added">
+                    <button onclick="" type="submit" class="btn btn-success float-right">Purchase Course</button>
+                </form>
+                </div>
+                </div> 
+                {{/if}}
+                {{/each}} 
+                {{/each}} 
+            </div> <br>
+        {{/each}}
+   </div>
+   </center>
+    </div> <br><br>
+</div>
