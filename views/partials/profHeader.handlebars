@@ -1,6 +1,3 @@
-{{!-- Bootstrap and FontAwesome --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-{{!-- Link Above --}}
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -13,6 +10,10 @@
     <li>
     </li>
     </ul>
+    <a style="color: white;" style="" href="">Welcome {{#each user}}
+      {{this.name}}{{#if this.name}}!{{/if}}
+      {{/each}}
+    </a> &nbsp;&nbsp; | &nbsp;
     <a href="/" style="margin-right: 20px; color:white" href="">Logout</a>
   </div>
 </nav>

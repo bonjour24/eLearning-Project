@@ -10,6 +10,7 @@ const usey=mongoose.model('User');
 const coursey=mongoose.model('Course');
 const urlencodedParser = parse.urlencoded({ extended: false });
 
+let allCourse=coursey.find({});
 
 router.get('/',(req,res)=>{
     res.render('index',{title:'Welcome!'});
@@ -61,9 +62,21 @@ router.post('/login',urlencodedParser,(req,res)=>{
                 })
             }
             else if(req.body.password==obj.password){
+                let present=obj.courses;
+                coursey.find({},(err,list)=>{
+                    if(err) console.log(err);
+                    else{
+                        for(let i=0;i<list.length;i++) {
+                        let val=list[i].name;
+                        if(val=>!present.includes(val))
+                        {console.log(val);}
+                        else console.log("PRESENT");
+                        }
+                    }
+                })
                 res.render('profilePage',{
-                    user:obj,
-                    name=obj._id,
+                    user:obj
+
                 });
             };
         }else console.log('Error in signing in');

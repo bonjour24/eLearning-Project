@@ -1,24 +1,45 @@
 <div class="main">
     {{!-- Bootstrap and FontAwesome --}}
+    <link rel="stylesheet" href="css/user.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 {{!-- Link Above --}}
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark ">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">eCourses <span class="sr-only">(current)</span></a>
-      </li>
-    <li>
-    </li>
-    </ul>
-    <a style="" href="">Welcome {{user.name}}</a>
-    <a href="/" style="margin-right: 20px; color:white" href="">Logout</a>
+{{> profHeader}}
+<div class="container col-sm-4">
+  {{#each user}}
+{{#if this.name}}
+  <div class="card card-profile text-center">
+  <img class="card-img-top" src="https://unsplash.it/340/160?image=354"/>
+  <div class="card-block">
+    <img class="card-img-profile" src="img/avatar.jpg"/>
+    <h5 class="card-title">
+      {{this.name}} <br>
+      {{#if this.userid}}User ID<small>({{this.userid}})</small>{{/if}}
+    </h5>
+    <div class="card-links">
+      <a class="fa fa-dribbble" href="#"></a>
+      <a class="fa fa-twitter" href="#"></a>
+      <a class="fa fa-facebook" href="#"></a>
+    </div>
+</div>
+{{/if}}
+{{/each}}
   </div>
-</nav>
-    {{user.courses}}
-    {{name}}
+  </div>
+  <h3 style="margin-left: 10%;">Your Courses:</h3>
+  <div class="contaier">
+    {{#each user}}
+            <div class="row">
+              {{#if this.courses}}
+                <div class="card" style="width: 18rem; margin-left:10%">
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&w=1000&q=80" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{this.courses}}</h5>
+                    <button class="btn btn-outline-primary float-right">Already Purchased !</button>
+                </div>
+                </div> 
+                {{/if}}
+            </div> <br>
+        {{/each}}
+   </div>
     <a href="/courses" class="btn btn-primary">Courses</a>
 </div>
