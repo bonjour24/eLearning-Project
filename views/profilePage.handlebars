@@ -5,15 +5,16 @@
 {{!-- Link Above --}}
 {{> profHeader}}
 <div class="container col-sm-4">
+
   {{#each user}}
-{{#if this.name}}
-  <div class="card card-profile text-center">
-  <img class="card-img-top" src="https://unsplash.it/340/160?image=354"/>
-  <div class="card-block">
+    {{#if this.name}}
+    <div class="card card-profile text-center">
+    <img class="card-img-top" src="https://unsplash.it/340/160?image=354"/>
+    <div class="card-block">
     <img class="card-img-profile" src="img/avatar.jpg"/>
     <h5 class="card-title">
-      {{this.name}} <br>
-      {{#if this.userid}}User ID<small>({{this.userid}})</small>{{/if}}
+    {{this.name}} <br>
+    {{#if this.userid}}User ID<small>({{this.userid}})</small>{{/if}}
     </h5>
     <div class="card-links">
       <a class="fa fa-dribbble" href="#"></a>
@@ -23,10 +24,12 @@
 </div>
 {{/if}}
 {{/each}}
+
   </div>
   </div>
   <h3 style="margin-left: 10%;">Your Courses:</h3>
   <div class="contaier">
+
     {{#each user}}
             <div class="row">
               {{#if this.courses}}
@@ -40,6 +43,7 @@
                 {{/if}}
             </div> <br>
         {{/each}}
+        
    </div>
     <a href="/courses" class="btn btn-primary">Courses</a>
 </div>

@@ -3,10 +3,12 @@
     {{> header}} <br><br>
        <div class="contaier">
         <h2 style="margin-left: 10%;">All Courses</h2> <br>
-            {{#each prods}}
+            {{#each prods}} 
+            {{!-- All Products --}}
             <div class="row">
                 {{#each this}}
                 {{#each this}}
+                {{!-- Course is represented by this --}}
                 {{#if this.name}}
                 <div class="card" style="width: 18rem; margin-left:10%">
                 <img class="card-img-top" src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&w=1000&q=80" alt="Card image cap">
